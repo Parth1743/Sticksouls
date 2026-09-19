@@ -1,0 +1,69 @@
+html, body { margin: 0; height: 100%; overflow: hidden; background: #000; font-family: Georgia, "Times New Roman", serif; color: #e8e2d2; }
+#game { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+
+#hud { position: fixed; inset: 0; pointer-events: none; user-select: none; }
+
+/* vitals */
+#vitals { position: absolute; left: 30px; top: 30px; }
+.bar { position: relative; height: 14px; background: #26262b; border: 1px solid #6b665a; box-shadow: 0 0 0 2px rgba(0,0,0,.75); margin-bottom: 8px; overflow: hidden; }
+.bar .fill, .bar .ghost { position: absolute; left: 0; top: 0; bottom: 0; }
+.bar .fill { transition: width .06s linear; }
+.hp .fill { background: #b3362f; }
+.hp .ghost { background: #c9a544; }
+.fp { height: 9px; }
+.fp .fill { background: #3f6fb3; }
+.fp.flash { border-color: #ff6a5a; box-shadow: 0 0 6px rgba(255,90,70,.8), 0 0 0 2px rgba(0,0,0,.75); }
+.st { height: 10px; }
+.st .fill { background: #5f8f3e; }
+
+#controls { position: absolute; right: 30px; top: 24px; text-align: right; font-size: 13px; color: rgba(200,195,180,.6); line-height: 18px; }
+
+/* bottom-left slots */
+#slots { position: absolute; left: 30px; bottom: 36px; display: flex; gap: 10px; align-items: flex-end; }
+#estus { position: relative; width: 60px; height: 60px; background: rgba(0,0,0,.7); border: 2px solid #6b665a; }
+#estus .key { position: absolute; left: 4px; top: 2px; font-size: 12px; color: #8a857a; }
+#estus .count { position: absolute; right: 4px; bottom: 2px; font-weight: bold; font-size: 16px; }
+#estus .flask { position: absolute; left: 18px; top: 10px; width: 24px; height: 38px; background: #e0892d;
+  clip-path: polygon(35% 0, 65% 0, 65% 28%, 100% 55%, 90% 100%, 10% 100%, 0 55%, 35% 28%); }
+#estus.empty .flask { background: #4a3a2a; }
+
+#weapon { position: relative; min-width: 170px; height: 60px; padding: 6px 10px 6px 24px; box-sizing: border-box; background: rgba(0,0,0,.7); border: 2px solid #6b665a; }
+#weapon .key { position: absolute; left: 4px; top: 2px; font-size: 12px; color: #8a857a; }
+#weapon .name { font-size: 17px; color: #e8e2d2; margin-top: 4px; }
+#weapon .skill { font-size: 12px; color: #9fb7dd; margin-top: 3px; }
+#weapon.nofp .skill { color: #6a6a70; }
+#weapon .idx { position: absolute; right: 6px; top: 3px; font-size: 11px; color: #8a857a; }
+#buff { position: absolute; left: 30px; bottom: 104px; font-size: 13px; color: #ffb070; text-shadow: 0 1px 3px #000; display: none; }
+
+#souls { position: absolute; right: 30px; bottom: 36px; min-width: 150px; padding: 6px 10px; text-align: right; font-size: 18px; background: rgba(0,0,0,.7); border: 1px solid #6b665a; }
+
+/* boss bar + prompt */
+#boss { position: absolute; left: 50%; bottom: 110px; width: 620px; transform: translateX(-50%); opacity: 0; transition: opacity .4s; }
+#boss.show { opacity: 1; }
+#boss .name { font-size: 18px; margin-bottom: 4px; text-shadow: 0 1px 3px #000; }
+#boss .bar { height: 12px; }
+#boss .fill { background: #b3362f; }
+
+#prompt { position: absolute; left: 50%; bottom: 150px; transform: translateX(-50%); font-size: 18px; text-shadow: 0 1px 3px #000; white-space: nowrap; }
+
+/* world-space markers */
+.marker { position: absolute; width: 44px; height: 6px; background: #111; border: 1px solid #000; transform: translate(-50%, -100%); }
+.marker .fill { height: 100%; background: #a3302a; }
+#reticle { position: absolute; width: 26px; height: 26px; border: 2px solid rgba(255,240,200,.9); border-radius: 50%; transform: translate(-50%, -50%); display: none; }
+#reticle::after { content: ''; position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; margin: -2.5px; background: rgba(255,240,200,.9); border-radius: 50%; }
+
+/* overlays */
+#fade { position: absolute; inset: 0; background: #000; opacity: 0; }
+#banner { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); height: 150px; background: rgba(0,0,0,.55);
+  display: flex; align-items: center; justify-content: center; opacity: 0; }
+#banner .text { font-size: 44px; letter-spacing: 3px; color: #dec478; text-shadow: 0 2px 12px #000; }
+#banner.death .text { font-size: 84px; color: #a01414; letter-spacing: 8px; }
+#banner.souls .text { color: #c8f0be; }
+#banner.item { height: 90px; background: rgba(0,0,0,.45); }
+#banner.item .text { font-size: 28px; color: #f0e6c8; letter-spacing: 2px; }
+
+#click { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.6); pointer-events: auto; cursor: pointer; }
+#click h1 { font-size: 64px; letter-spacing: 14px; margin: 0 0 12px; color: #d9c9a3; font-weight: normal; }
+#click p { color: #aaa; letter-spacing: 2px; margin: 0; }
+#click.hidden { display: none; }

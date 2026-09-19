@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ashen — souls-like prototype</title>
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.169.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="hud">
+  <div id="vitals">
+    <div class="bar hp"><div class="ghost"></div><div class="fill"></div></div>
+    <div class="bar fp"><div class="fill"></div></div>
+    <div class="bar st"><div class="fill"></div></div>
+  </div>
+
+  <div id="controls">
+    WASD move &middot; mouse look &middot; LMB light &middot; RMB heavy &middot; F / Shift skill<br>
+    Space roll (no direction = backstep) &middot; Q lock-on &middot; E open / rest<br>
+    R estus &middot; 1-5 / wheel switch weapon &middot; Esc release mouse
+  </div>
+
+  <div id="slots">
+    <div id="estus"><span class="key">R</span><div class="flask"></div><span class="count">3</span></div>
+    <div id="weapon"><span class="key">F</span><div class="name">Longsword</div><div class="skill">Stance Thrust</div><span class="idx"></span></div>
+  </div>
+  <div id="buff"></div>
+  <div id="souls">0</div>
+
+  <div id="boss"><div class="name"></div><div class="bar"><div class="fill"></div></div></div>
+  <div id="prompt"></div>
+
+  <div id="markers"></div>
+  <div id="reticle"></div>
+
+  <div id="fade"></div>
+  <div id="banner"><div class="text"></div></div>
+
+  <div id="click">
+    <h1>ASHEN</h1>
+    <p>Click to take control</p>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
